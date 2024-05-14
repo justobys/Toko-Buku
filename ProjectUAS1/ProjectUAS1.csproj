@@ -106,18 +106,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bantuan\FormTambah.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bantuan\FormTambah.Designer.cs">
-      <DependentUpon>FormTambah.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Bantuan\FormUbah.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bantuan\FormUbah.Designer.cs">
-      <DependentUpon>FormUbah.cs</DependentUpon>
-    </Compile>
     <Compile Include="Bantuan\frmBantuan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,12 +144,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Bantuan\FormTambah.resx">
-      <DependentUpon>FormTambah.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Bantuan\FormUbah.resx">
-      <DependentUpon>FormUbah.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Bantuan\frmBantuan.resx">
       <DependentUpon>frmBantuan.cs</DependentUpon>
     </EmbeddedResource>

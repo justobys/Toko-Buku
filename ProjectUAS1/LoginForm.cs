@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-using BCrypt;
-using Org.BouncyCastle.Crypto.Generators;
 
 namespace ProjectUAS1
 {
@@ -19,6 +17,11 @@ namespace ProjectUAS1
         {
             InitializeComponent();
             txtUsername.Focus();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -95,12 +98,5 @@ namespace ProjectUAS1
                 }
             }
         }
-
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
     }
 }

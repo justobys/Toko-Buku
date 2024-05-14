@@ -28,36 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlStockBuku = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblStockBuku = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.pnlTotalTransaksi = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblTotalTransaksi = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlTotalBuku = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblTotalBuku = new System.Windows.Forms.Label();
             this.btnMoreInfoTotalBuku = new System.Windows.Forms.Button();
-            this.btnCari = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnHapus = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnEdit = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnTambah = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbKategori = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtHarga = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtJumlah = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtAuthor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtJudulBuku = new System.Windows.Forms.TextBox();
             this.dgvTableBuku = new System.Windows.Forms.DataGridView();
+            this.btnTambah = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnHapus = new System.Windows.Forms.Button();
+            this.btnCari = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.pnlStockBuku.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.pnlTotalTransaksi.SuspendLayout();
@@ -72,7 +75,7 @@
             this.pnlStockBuku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.pnlStockBuku.Controls.Add(this.pictureBox8);
             this.pnlStockBuku.Controls.Add(this.label11);
-            this.pnlStockBuku.Controls.Add(this.label12);
+            this.pnlStockBuku.Controls.Add(this.lblStockBuku);
             this.pnlStockBuku.Controls.Add(this.button2);
             this.pnlStockBuku.Location = new System.Drawing.Point(746, 193);
             this.pnlStockBuku.Name = "pnlStockBuku";
@@ -100,16 +103,16 @@
             this.label11.TabIndex = 2;
             this.label11.Text = "Stock Buku";
             // 
-            // label12
+            // lblStockBuku
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Poppins", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(9, 10);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 58);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "00";
+            this.lblStockBuku.AutoSize = true;
+            this.lblStockBuku.Font = new System.Drawing.Font("Poppins", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockBuku.ForeColor = System.Drawing.Color.White;
+            this.lblStockBuku.Location = new System.Drawing.Point(9, 10);
+            this.lblStockBuku.Name = "lblStockBuku";
+            this.lblStockBuku.Size = new System.Drawing.Size(69, 58);
+            this.lblStockBuku.TabIndex = 1;
+            this.lblStockBuku.Text = "00";
             // 
             // button2
             // 
@@ -132,7 +135,7 @@
             this.pnlTotalTransaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.pnlTotalTransaksi.Controls.Add(this.pictureBox7);
             this.pnlTotalTransaksi.Controls.Add(this.label9);
-            this.pnlTotalTransaksi.Controls.Add(this.label10);
+            this.pnlTotalTransaksi.Controls.Add(this.lblTotalTransaksi);
             this.pnlTotalTransaksi.Controls.Add(this.button1);
             this.pnlTotalTransaksi.Location = new System.Drawing.Point(417, 192);
             this.pnlTotalTransaksi.Name = "pnlTotalTransaksi";
@@ -160,16 +163,16 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Total Transaksi";
             // 
-            // label10
+            // lblTotalTransaksi
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Poppins", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(9, 10);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 58);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "00";
+            this.lblTotalTransaksi.AutoSize = true;
+            this.lblTotalTransaksi.Font = new System.Drawing.Font("Poppins", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalTransaksi.ForeColor = System.Drawing.Color.White;
+            this.lblTotalTransaksi.Location = new System.Drawing.Point(9, 10);
+            this.lblTotalTransaksi.Name = "lblTotalTransaksi";
+            this.lblTotalTransaksi.Size = new System.Drawing.Size(69, 58);
+            this.lblTotalTransaksi.TabIndex = 1;
+            this.lblTotalTransaksi.Text = "00";
             // 
             // button1
             // 
@@ -192,7 +195,7 @@
             this.pnlTotalBuku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.pnlTotalBuku.Controls.Add(this.pictureBox6);
             this.pnlTotalBuku.Controls.Add(this.label8);
-            this.pnlTotalBuku.Controls.Add(this.label7);
+            this.pnlTotalBuku.Controls.Add(this.lblTotalBuku);
             this.pnlTotalBuku.Controls.Add(this.btnMoreInfoTotalBuku);
             this.pnlTotalBuku.Location = new System.Drawing.Point(89, 193);
             this.pnlTotalBuku.Name = "pnlTotalBuku";
@@ -220,16 +223,16 @@
             this.label8.TabIndex = 2;
             this.label8.Text = "Total Buku";
             // 
-            // label7
+            // lblTotalBuku
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Poppins", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(9, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 58);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "00";
+            this.lblTotalBuku.AutoSize = true;
+            this.lblTotalBuku.Font = new System.Drawing.Font("Poppins", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalBuku.ForeColor = System.Drawing.Color.White;
+            this.lblTotalBuku.Location = new System.Drawing.Point(9, 10);
+            this.lblTotalBuku.Name = "lblTotalBuku";
+            this.lblTotalBuku.Size = new System.Drawing.Size(69, 58);
+            this.lblTotalBuku.TabIndex = 1;
+            this.lblTotalBuku.Text = "00";
             // 
             // btnMoreInfoTotalBuku
             // 
@@ -247,229 +250,59 @@
             this.btnMoreInfoTotalBuku.Text = "More Info";
             this.btnMoreInfoTotalBuku.UseVisualStyleBackColor = false;
             // 
-            // btnCari
+            // cmbKategori
             // 
-            this.btnCari.Location = new System.Drawing.Point(552, 99);
-            this.btnCari.Name = "btnCari";
-            this.btnCari.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(231)))), ((int)(((byte)(225)))));
-            this.btnCari.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(231)))), ((int)(((byte)(225)))));
-            this.btnCari.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnCari.OverrideDefault.Border.Rounding = 3;
-            this.btnCari.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnCari.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnCari.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCari.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnCari.Size = new System.Drawing.Size(156, 46);
-            this.btnCari.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(231)))), ((int)(((byte)(225)))));
-            this.btnCari.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(231)))), ((int)(((byte)(225)))));
-            this.btnCari.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnCari.StateCommon.Border.Rounding = 3;
-            this.btnCari.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnCari.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnCari.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCari.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(102)))), ((int)(((byte)(100)))));
-            this.btnCari.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(102)))), ((int)(((byte)(100)))));
-            this.btnCari.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnCari.StatePressed.Border.Rounding = 3;
-            this.btnCari.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnCari.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnCari.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCari.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(179)))), ((int)(((byte)(175)))));
-            this.btnCari.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(179)))), ((int)(((byte)(175)))));
-            this.btnCari.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnCari.StateTracking.Border.Rounding = 3;
-            this.btnCari.TabIndex = 32;
-            this.btnCari.Values.Image = global::ProjectUAS1.Properties.Resources.search_1;
-            this.btnCari.Values.Text = "Cari Buku";
-            // 
-            // btnHapus
-            // 
-            this.btnHapus.Location = new System.Drawing.Point(373, 99);
-            this.btnHapus.Name = "btnHapus";
-            this.btnHapus.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnHapus.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnHapus.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnHapus.OverrideDefault.Border.Rounding = 3;
-            this.btnHapus.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnHapus.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnHapus.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHapus.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnHapus.Size = new System.Drawing.Size(173, 46);
-            this.btnHapus.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnHapus.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnHapus.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnHapus.StateCommon.Border.Rounding = 3;
-            this.btnHapus.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnHapus.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnHapus.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHapus.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(21)))), ((int)(((byte)(29)))));
-            this.btnHapus.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(21)))), ((int)(((byte)(29)))));
-            this.btnHapus.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnHapus.StatePressed.Border.Rounding = 3;
-            this.btnHapus.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnHapus.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnHapus.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHapus.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(40)))), ((int)(((byte)(5)))));
-            this.btnHapus.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(40)))), ((int)(((byte)(5)))));
-            this.btnHapus.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnHapus.StateTracking.Border.Rounding = 3;
-            this.btnHapus.TabIndex = 31;
-            this.btnHapus.Values.Image = global::ProjectUAS1.Properties.Resources.trash_can_1;
-            this.btnHapus.Values.Text = "Hapus Buku";
-            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(227, 99);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
-            this.btnEdit.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
-            this.btnEdit.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnEdit.OverrideDefault.Border.Rounding = 3;
-            this.btnEdit.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnEdit.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnEdit.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnEdit.Size = new System.Drawing.Size(140, 46);
-            this.btnEdit.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
-            this.btnEdit.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
-            this.btnEdit.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnEdit.StateCommon.Border.Rounding = 3;
-            this.btnEdit.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnEdit.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnEdit.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(135)))), ((int)(((byte)(4)))));
-            this.btnEdit.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(135)))), ((int)(((byte)(4)))));
-            this.btnEdit.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnEdit.StatePressed.Border.Rounding = 3;
-            this.btnEdit.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnEdit.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnEdit.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(164)))), ((int)(((byte)(4)))));
-            this.btnEdit.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(164)))), ((int)(((byte)(4)))));
-            this.btnEdit.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnEdit.StateTracking.Border.Rounding = 3;
-            this.btnEdit.TabIndex = 29;
-            this.btnEdit.Values.Image = global::ProjectUAS1.Properties.Resources.edit_1;
-            this.btnEdit.Values.Text = "Edit Buku";
-            // 
-            // btnTambah
-            // 
-            this.btnTambah.Location = new System.Drawing.Point(19, 99);
-            this.btnTambah.Name = "btnTambah";
-            this.btnTambah.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
-            this.btnTambah.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
-            this.btnTambah.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTambah.OverrideDefault.Border.Rounding = 3;
-            this.btnTambah.OverrideDefault.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnTambah.OverrideDefault.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnTambah.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnTambah.Size = new System.Drawing.Size(202, 46);
-            this.btnTambah.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
-            this.btnTambah.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
-            this.btnTambah.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTambah.StateCommon.Border.Rounding = 3;
-            this.btnTambah.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnTambah.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnTambah.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(90)))), ((int)(((byte)(37)))));
-            this.btnTambah.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(90)))), ((int)(((byte)(37)))));
-            this.btnTambah.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTambah.StatePressed.Border.Rounding = 3;
-            this.btnTambah.StatePressed.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnTambah.StatePressed.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btnTambah.StatePressed.Content.ShortText.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(116)))), ((int)(((byte)(47)))));
-            this.btnTambah.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(116)))), ((int)(((byte)(47)))));
-            this.btnTambah.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btnTambah.StateTracking.Border.Rounding = 3;
-            this.btnTambah.TabIndex = 30;
-            this.btnTambah.Values.Image = global::ProjectUAS1.Properties.Resources.add_1;
-            this.btnTambah.Values.Text = "Tambah Buku";
-            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(453, 57);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(188, 24);
-            this.comboBox1.TabIndex = 28;
+            this.cmbKategori.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmbKategori.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbKategori.FormattingEnabled = true;
+            this.cmbKategori.Location = new System.Drawing.Point(563, 53);
+            this.cmbKategori.Name = "cmbKategori";
+            this.cmbKategori.Size = new System.Drawing.Size(188, 38);
+            this.cmbKategori.TabIndex = 28;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Poppins Medium", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(836, 14);
+            this.label6.Location = new System.Drawing.Point(855, 10);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 40);
             this.label6.TabIndex = 27;
             this.label6.Text = "Harga";
             // 
-            // textBox5
+            // txtHarga
             // 
-            this.textBox5.Location = new System.Drawing.Point(843, 57);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(202, 24);
-            this.textBox5.TabIndex = 26;
+            this.txtHarga.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHarga.Location = new System.Drawing.Point(862, 53);
+            this.txtHarga.Multiline = true;
+            this.txtHarga.Name = "txtHarga";
+            this.txtHarga.Size = new System.Drawing.Size(128, 38);
+            this.txtHarga.TabIndex = 26;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Poppins Medium", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(669, 14);
+            this.label5.Location = new System.Drawing.Point(762, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 40);
+            this.label5.Size = new System.Drawing.Size(87, 40);
             this.label5.TabIndex = 25;
-            this.label5.Text = "Jumlah";
+            this.label5.Text = "Stock";
             // 
-            // textBox4
+            // txtJumlah
             // 
-            this.textBox4.Location = new System.Drawing.Point(676, 57);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(148, 24);
-            this.textBox4.TabIndex = 24;
+            this.txtJumlah.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJumlah.Location = new System.Drawing.Point(769, 53);
+            this.txtJumlah.Multiline = true;
+            this.txtJumlah.Name = "txtJumlah";
+            this.txtJumlah.Size = new System.Drawing.Size(80, 38);
+            this.txtJumlah.TabIndex = 24;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Poppins Medium", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(446, 14);
+            this.label4.Location = new System.Drawing.Point(556, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 40);
             this.label4.TabIndex = 23;
@@ -479,40 +312,46 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poppins Medium", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(226, 14);
+            this.label3.Location = new System.Drawing.Point(336, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 40);
             this.label3.TabIndex = 22;
             this.label3.Text = "Author";
             // 
-            // textBox2
+            // txtAuthor
             // 
-            this.textBox2.Location = new System.Drawing.Point(233, 57);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(202, 24);
-            this.textBox2.TabIndex = 21;
+            this.txtAuthor.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAuthor.Location = new System.Drawing.Point(343, 53);
+            this.txtAuthor.Multiline = true;
+            this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.Size = new System.Drawing.Size(202, 38);
+            this.txtAuthor.TabIndex = 21;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Poppins Medium", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 14);
+            this.label2.Location = new System.Drawing.Point(122, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 40);
             this.label2.TabIndex = 20;
             this.label2.Text = "Judul Buku";
             // 
-            // textBox1
+            // txtJudulBuku
             // 
-            this.textBox1.Location = new System.Drawing.Point(19, 57);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(202, 24);
-            this.textBox1.TabIndex = 19;
+            this.txtJudulBuku.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJudulBuku.Location = new System.Drawing.Point(129, 53);
+            this.txtJudulBuku.Multiline = true;
+            this.txtJudulBuku.Name = "txtJudulBuku";
+            this.txtJudulBuku.Size = new System.Drawing.Size(202, 38);
+            this.txtJudulBuku.TabIndex = 19;
             // 
             // dgvTableBuku
             // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTableBuku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvTableBuku.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTableBuku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTableBuku.Location = new System.Drawing.Point(19, 369);
             this.dgvTableBuku.Name = "dgvTableBuku";
@@ -520,33 +359,137 @@
             this.dgvTableBuku.RowTemplate.Height = 24;
             this.dgvTableBuku.Size = new System.Drawing.Size(1026, 411);
             this.dgvTableBuku.TabIndex = 37;
+            this.dgvTableBuku.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTableBuku_CellClick);
+            // 
+            // btnTambah
+            // 
+            this.btnTambah.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.btnTambah.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnTambah.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTambah.FlatAppearance.BorderSize = 0;
+            this.btnTambah.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(116)))), ((int)(((byte)(47)))));
+            this.btnTambah.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTambah.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTambah.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnTambah.Image = global::ProjectUAS1.Properties.Resources.add_1;
+            this.btnTambah.Location = new System.Drawing.Point(19, 112);
+            this.btnTambah.Name = "btnTambah";
+            this.btnTambah.Size = new System.Drawing.Size(200, 53);
+            this.btnTambah.TabIndex = 38;
+            this.btnTambah.Text = "Tambah Buku";
+            this.btnTambah.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTambah.UseVisualStyleBackColor = false;
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.btnEdit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(135)))), ((int)(((byte)(4)))));
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEdit.Image = global::ProjectUAS1.Properties.Resources.edit_1;
+            this.btnEdit.Location = new System.Drawing.Point(233, 112);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(160, 53);
+            this.btnEdit.TabIndex = 39;
+            this.btnEdit.Text = "Edit Buku";
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnHapus
+            // 
+            this.btnHapus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnHapus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnHapus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHapus.FlatAppearance.BorderSize = 0;
+            this.btnHapus.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(143)))), ((int)(((byte)(34)))), ((int)(((byte)(45)))));
+            this.btnHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHapus.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHapus.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnHapus.Image = global::ProjectUAS1.Properties.Resources.trash_can_1;
+            this.btnHapus.Location = new System.Drawing.Point(410, 112);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(183, 53);
+            this.btnHapus.TabIndex = 40;
+            this.btnHapus.Text = "Hapus Buku";
+            this.btnHapus.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHapus.UseVisualStyleBackColor = false;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
+            // 
+            // btnCari
+            // 
+            this.btnCari.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(231)))), ((int)(((byte)(225)))));
+            this.btnCari.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCari.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCari.FlatAppearance.BorderSize = 0;
+            this.btnCari.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(154)))), ((int)(((byte)(150)))));
+            this.btnCari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCari.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCari.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCari.Image = global::ProjectUAS1.Properties.Resources.search_1;
+            this.btnCari.Location = new System.Drawing.Point(609, 112);
+            this.btnCari.Name = "btnCari";
+            this.btnCari.Size = new System.Drawing.Size(183, 53);
+            this.btnCari.TabIndex = 41;
+            this.btnCari.Text = "Cari Buku";
+            this.btnCari.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCari.UseVisualStyleBackColor = false;
+            this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins Medium", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(52, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 40);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "ID";
+            // 
+            // txtID
+            // 
+            this.txtID.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtID.Location = new System.Drawing.Point(59, 53);
+            this.txtID.Multiline = true;
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(59, 38);
+            this.txtID.TabIndex = 42;
             // 
             // FormDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1066, 826);
-            this.Controls.Add(this.dgvTableBuku);
-            this.Controls.Add(this.pnlStockBuku);
-            this.Controls.Add(this.pnlTotalTransaksi);
-            this.Controls.Add(this.pnlTotalBuku);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnCari);
             this.Controls.Add(this.btnHapus);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnTambah);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.dgvTableBuku);
+            this.Controls.Add(this.pnlStockBuku);
+            this.Controls.Add(this.pnlTotalTransaksi);
+            this.Controls.Add(this.pnlTotalBuku);
+            this.Controls.Add(this.cmbKategori);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtHarga);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtJumlah);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtAuthor);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtJudulBuku);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormDashboard";
             this.Text = "FormDashboard";
+            this.Load += new System.EventHandler(this.FormDashboard_Load);
             this.pnlStockBuku.ResumeLayout(false);
             this.pnlStockBuku.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
@@ -567,32 +510,34 @@
         private System.Windows.Forms.Panel pnlStockBuku;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblStockBuku;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel pnlTotalTransaksi;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lblTotalTransaksi;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlTotalBuku;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblTotalBuku;
         private System.Windows.Forms.Button btnMoreInfoTotalBuku;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCari;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnHapus;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnEdit;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnTambah;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbKategori;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtHarga;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtJumlah;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtAuthor;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtJudulBuku;
         private System.Windows.Forms.DataGridView dgvTableBuku;
+        private System.Windows.Forms.Button btnTambah;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnHapus;
+        private System.Windows.Forms.Button btnCari;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtID;
     }
 }
