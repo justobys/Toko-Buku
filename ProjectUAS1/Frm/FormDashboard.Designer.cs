@@ -332,6 +332,7 @@
             this.btnHapus.TabIndex = 31;
             this.btnHapus.Values.Image = global::ProjectUAS1.Properties.Resources.trash_can_1;
             this.btnHapus.Values.Text = "Hapus Buku";
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnEdit
             // 
@@ -418,6 +419,7 @@
             this.btnTambah.TabIndex = 30;
             this.btnTambah.Values.Image = global::ProjectUAS1.Properties.Resources.add_1;
             this.btnTambah.Values.Text = "Tambah Buku";
+            this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
             // 
             // comboBox1
             // 

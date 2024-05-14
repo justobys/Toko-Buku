@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace ProjectUAS1.Bantuan
 {
-    public partial class FormTambah : Form
+    public partial class FormUbah : Form
     {
-        public FormTambah()
+        public FormUbah()
         {
             InitializeComponent();
-        }
-
-        private void btnHapus_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

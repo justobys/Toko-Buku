@@ -35,10 +35,10 @@ namespace ProjectUAS1
                     {
                         if (reader.Read())
                         {
-                            string storedPasswordHash = reader["password"].ToString();
+                            string storedPassword = reader["password"].ToString();
                             string enteredPassword = txtPassword.Text;
 
-                            if (BCrypt.Net.BCrypt.Verify(enteredPassword, storedPasswordHash))
+                            if (enteredPassword == storedPassword)
                             {
                                 string username = reader["username"].ToString();
                                 string level = reader["level"].ToString();
@@ -95,6 +95,7 @@ namespace ProjectUAS1
                 }
             }
         }
+
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {

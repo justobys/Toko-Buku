@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectUAS1.Bantuan;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,6 +24,18 @@ namespace ProjectUAS1.Frm
                 dgvTableBuku.Location = new Point(19, 150);
                 dgvTableBuku.Size = new Size(761, 480);
             }
+        }
+
+        private void btnTambah_Click(object sender, EventArgs e)
+        {
+            FormTambah formTambah = new FormTambah();
+            formTambah.Show();
+
+        }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
