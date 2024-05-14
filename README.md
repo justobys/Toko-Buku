@@ -1,10 +1,7 @@
-Sure! Here is a README text for your project:
-
----
 
 # Bookstore Project
 
-This project is part of the Informatics Project course. The title of this project is "Bookstore" and it is implemented using C#.
+This project is part of the Informatics Project course. The title of this project is "toko buku" and it is implemented using C#.
 
 ## Project Overview
 
@@ -25,9 +22,7 @@ The Bookstore project is designed to manage and operate a virtual bookstore, inc
 ## Technologies Used
 
 - **Programming Language:** C#
-- **Database:** (Specify the database used, if any)
-- **IDE:** (Specify the Integrated Development Environment used, if any)
-- **Framework:** (Specify the framework used, if any)
+- **Database:** localhost
 
 ## Getting Started
 
