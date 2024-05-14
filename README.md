@@ -33,7 +33,7 @@ The Bookstore project is designed to manage and operate a virtual bookstore, inc
 
 1. Clone the repository:
    ```sh
-   git clone [repository URL]
+   git clone https://github.com/justobys/Toko-Buku.git
    ```
 2. Open the project in your preferred IDE.
 3. Build and run the application.
