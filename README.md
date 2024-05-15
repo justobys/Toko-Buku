@@ -9,8 +9,8 @@ The Bookstore project is designed to manage and operate a virtual bookstore, inc
 
 ## Author
 
-- **Name:** Andi Muhammad Fadjrin Arif
-- **Student ID (NIM):** 20212205036
+- **Name:** Andi Muhammad Fadjrin Arif & Sultan Fadil
+- **Student ID (NIM):** 20212205036 & 20212205012
 
 ## Features
 
