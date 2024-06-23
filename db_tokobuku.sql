@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Bulan Mei 2024 pada 14.06
+-- Waktu pembuatan: 23 Jun 2024 pada 14.16
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.1.12
 
@@ -29,23 +29,24 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbl_buku` (
   `id` int(11) NOT NULL,
+  `idBuku` varchar(10) NOT NULL,
   `judul_buku` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
   `id_kategori` int(11) DEFAULT NULL,
+  `lokasi_buku` varchar(5) NOT NULL,
   `jumlah` int(11) DEFAULT NULL,
-  `harga` decimal(10,2) DEFAULT NULL
+  `harga` decimal(10,2) DEFAULT NULL,
+  `harga_jual` decimal(10,2) DEFAULT NULL,
+  `profit` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `tbl_buku`
 --
 
-INSERT INTO `tbl_buku` (`id`, `judul_buku`, `author`, `id_kategori`, `jumlah`, `harga`) VALUES
-(12, 'Weathering With You', 'Makoto Shinkai', 1, 5, '45000.00'),
-(13, 'Cara Ternak Lele by SF', 'Sultan Fadil', 10, 100, '100000.00'),
-(14, 'Ruri Dragon', 'Shindou Masaoki', 2, 12, '45000.00'),
-(15, 'One Piece', 'Eichiro Oda', 2, 10, '45000.00'),
-(17, 'Cara Bernapas by opik kumis', 'Opik', 1, 1, '1000000.00');
+INSERT INTO `tbl_buku` (`id`, `idBuku`, `judul_buku`, `author`, `id_kategori`, `lokasi_buku`, `jumlah`, `harga`, `harga_jual`, `profit`) VALUES
+(22, 'IB001', 'Acumalaka', 'andi', 1, '', 5, '20000.00', '21000.00', '1000.00'),
+(24, 'IB002', 'Kacang Lupa Isinya', 'Fadjrin', 1, '', 25, '50000.00', '52500.00', '2500.00');
 
 -- --------------------------------------------------------
 
@@ -147,7 +148,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT untuk tabel `tbl_buku`
 --
 ALTER TABLE `tbl_buku`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_kategori`
