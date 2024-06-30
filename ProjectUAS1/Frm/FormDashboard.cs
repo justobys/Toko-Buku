@@ -11,10 +11,11 @@ namespace ProjectUAS1.Frm
     public partial class FormDashboard : Form
     {
         string connectionString = "server=localhost;user=root;password=;database=db_tokobuku;";
-
+        private string userRole;
         public FormDashboard(string role)
         {
             InitializeComponent();
+            userRole = role;
             IsiComboBoxKategori();
             btnTambah.Visible = btnHapus.Visible = btnEdit.Visible = role == "admin";
             pnlTotalBuku.Visible = pnlTotalTransaksi.Visible = pnlStockBuku.Visible = role == "admin";
@@ -24,13 +25,13 @@ namespace ProjectUAS1.Frm
                 btnCari.Location = new Point(19, 99);
                 dgvTableBuku.Location = new Point(19, 150);
                 dgvTableBuku.Size = new Size(761, 480);
+                lblProfit.Visible = txtProfit.Visible = label10.Visible = false; // Sembunyikan komponen profit
             }
 
             dgvTableBuku.CellClick += new DataGridViewCellEventHandler(dgvTableBuku_CellClick);
             IsiDataGridView();
             txtID.Text = GenerateIdBuku();
         }
-
 
         // Generate idBuku
         private string GenerateIdBuku()
@@ -64,14 +65,21 @@ namespace ProjectUAS1.Frm
             {
                 conn.Open();
                 string query = @"SELECT tbl_buku.idBuku, tbl_buku.judul_buku, tbl_buku.author, tbl_kategori.kategori, 
-                                 tbl_buku.jumlah, tbl_buku.harga, tbl_buku.harga_jual, tbl_buku.profit 
-                                 FROM tbl_buku 
-                                 INNER JOIN tbl_kategori ON tbl_buku.id_kategori = tbl_kategori.id_kategori";
+                         tbl_buku.jumlah, tbl_buku.harga, tbl_buku.harga_jual, tbl_buku.profit, tbl_buku.lokasi_buku 
+                         FROM tbl_buku 
+                         INNER JOIN tbl_kategori ON tbl_buku.id_kategori = tbl_kategori.id_kategori";
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-
                 dgvTableBuku.DataSource = dt;
+
+                if (userRole == "public")
+                {
+                    dgvTableBuku.Columns["harga"].Visible = false;
+                    dgvTableBuku.Columns["profit"].Visible = false;
+                    dgvTableBuku.Columns["harga_jual"].HeaderText = "Harga";
+                }
+
                 dgvTableBuku.Columns["idBuku"].HeaderText = "ID";
                 dgvTableBuku.Columns["judul_buku"].HeaderText = "Judul Buku";
                 dgvTableBuku.Columns["author"].HeaderText = "Author";
@@ -80,6 +88,7 @@ namespace ProjectUAS1.Frm
                 dgvTableBuku.Columns["harga"].HeaderText = "Harga";
                 dgvTableBuku.Columns["harga_jual"].HeaderText = "Harga Jual";
                 dgvTableBuku.Columns["profit"].HeaderText = "Profit";
+                dgvTableBuku.Columns["lokasi_buku"].HeaderText = "Lokasi Buku";
 
                 dgvTableBuku.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dgvTableBuku.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
@@ -88,6 +97,7 @@ namespace ProjectUAS1.Frm
                 dgvTableBuku.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
                 dgvTableBuku.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
                 dgvTableBuku.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
                 dgvTableBuku.Columns["harga"].DefaultCellStyle.Format = "C0";
                 dgvTableBuku.Columns["harga"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("id-ID");
                 dgvTableBuku.Columns["harga_jual"].DefaultCellStyle.Format = "C0";
@@ -119,13 +129,13 @@ namespace ProjectUAS1.Frm
         }
 
         //Method untuk menambahkan buku
-        void TambahBuku(string id_buku, string judul_buku, string author, int id_kategori, int jumlah, decimal harga, decimal profit, decimal harga_jual)
+        void TambahBuku(string id_buku, string judul_buku, string author, int id_kategori, int jumlah, decimal harga, decimal profit, decimal harga_jual, string lokasi_buku)
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"INSERT INTO tbl_buku (idBuku, judul_buku, author, id_kategori, jumlah, harga, profit, harga_jual) 
-                         VALUES (@idBuku, @judul, @author, @kategori, @jumlah, @harga, @profit, @harga_jual)";
+                string query = @"INSERT INTO tbl_buku (idBuku, judul_buku, author, id_kategori, jumlah, harga, profit, harga_jual, lokasi_buku) 
+                         VALUES (@idBuku, @judul, @author, @kategori, @jumlah, @harga, @profit, @harga_jual, @lokasi_buku)";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@idBuku", id_buku);
                 cmd.Parameters.AddWithValue("@judul", judul_buku);
@@ -135,6 +145,7 @@ namespace ProjectUAS1.Frm
                 cmd.Parameters.AddWithValue("@harga", harga);
                 cmd.Parameters.AddWithValue("@profit", profit);
                 cmd.Parameters.AddWithValue("@harga_jual", harga_jual);
+                cmd.Parameters.AddWithValue("@lokasi_buku", lokasi_buku);
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Data berhasil ditambahkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -143,14 +154,15 @@ namespace ProjectUAS1.Frm
             }
         }
 
-        void UbahBuku(string id_buku, string judul_buku, string author, int id_kategori, int jumlah, decimal harga, decimal profit, decimal harga_jual)
+
+        void UbahBuku(string id_buku, string judul_buku, string author, int id_kategori, int jumlah, decimal harga, decimal profit, decimal harga_jual, string lokasi_buku)
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
                 string query = @"UPDATE tbl_buku 
                          SET judul_buku = @judul, author = @author, id_kategori = @kategori, jumlah = @jumlah, 
-                             harga = @harga, profit = @profit, harga_jual = @harga_jual
+                             harga = @harga, profit = @profit, harga_jual = @harga_jual, lokasi_buku = @lokasi_buku
                          WHERE idBuku = @idBuku";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@idBuku", id_buku);
@@ -161,6 +173,7 @@ namespace ProjectUAS1.Frm
                 cmd.Parameters.AddWithValue("@harga", harga);
                 cmd.Parameters.AddWithValue("@profit", profit);
                 cmd.Parameters.AddWithValue("@harga_jual", harga_jual);
+                cmd.Parameters.AddWithValue("@lokasi_buku", lokasi_buku);
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Data berhasil diubah!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -168,6 +181,7 @@ namespace ProjectUAS1.Frm
                 IsiDataGridView();
             }
         }
+
 
         //Method Hapus
         // Fungsi untuk menghapus buku
@@ -187,12 +201,13 @@ namespace ProjectUAS1.Frm
             }
         }
 
+
         DataTable CariBuku(string judul_buku, string author, string kategori)
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"SELECT tbl_buku.id, tbl_buku.judul_buku, tbl_buku.author, tbl_kategori.kategori, 
+                string query = @"SELECT tbl_buku.idBuku, tbl_buku.judul_buku, tbl_buku.author, tbl_kategori.kategori, 
                                  tbl_buku.jumlah, tbl_buku.harga 
                                  FROM tbl_buku 
                                  INNER JOIN tbl_kategori ON tbl_buku.id_kategori = tbl_kategori.id_kategori 
@@ -212,59 +227,142 @@ namespace ProjectUAS1.Frm
 
         private void dgvTableBuku_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = dgvTableBuku.Rows[e.RowIndex];
-                txtID.Text = row.Cells["idBuku"].Value.ToString();
-                txtJudulBuku.Text = row.Cells["judul_buku"].Value.ToString();
-                txtAuthor.Text = row.Cells["author"].Value.ToString();
-                cmbKategori.Text = row.Cells["kategori"].Value.ToString();
-                txtJumlah.Text = row.Cells["jumlah"].Value.ToString();
-                txtHarga.Text = row.Cells["harga"].Value.ToString();
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = dgvTableBuku.Rows[e.RowIndex];
+                    if (row != null)
+                    {
+                        txtID.Text = row.Cells["idBuku"]?.Value?.ToString();
+                        txtJudulBuku.Text = row.Cells["judul_buku"]?.Value?.ToString();
+                        txtAuthor.Text = row.Cells["author"]?.Value?.ToString();
+                        cmbKategori.Text = row.Cells["kategori"]?.Value?.ToString();
+                        txtJumlah.Text = row.Cells["jumlah"]?.Value?.ToString();
+                        txtLokasiBuku.Text = row.Cells["lokasi_buku"]?.Value.ToString();
+
+                        if (userRole == "public")
+                        {
+                            txtHarga.Text = row.Cells["harga_jual"]?.Value?.ToString();
+                        }
+                        else
+                        {
+                            txtHarga.Text = row.Cells["harga"]?.Value?.ToString();
+                        }
+                    }
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show("Terjadi kesalahan saat mengambil data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
+            // Validasi input
+            if (string.IsNullOrWhiteSpace(txtID.Text) ||
+                string.IsNullOrWhiteSpace(txtJudulBuku.Text) ||
+                string.IsNullOrWhiteSpace(txtAuthor.Text) ||
+                cmbKategori.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(txtJumlah.Text) ||
+                string.IsNullOrWhiteSpace(txtHarga.Text) ||
+                string.IsNullOrWhiteSpace(txtProfit.Text) ||
+                string.IsNullOrWhiteSpace(txtLokasiBuku.Text))
+            {
+                MessageBox.Show("Semua kolom wajib diisi!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int jumlah;
+            decimal harga, profitPercent, profit, harga_jual;
+
+            // Validasi angka untuk jumlah, harga, dan profit
+            if (!int.TryParse(txtJumlah.Text, out jumlah) ||
+                !decimal.TryParse(txtHarga.Text, out harga) ||
+                !decimal.TryParse(txtProfit.Text, out profitPercent))
+            {
+                MessageBox.Show("Jumlah, Harga, dan Profit harus diisi dengan angka yang valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Dapatkan data dari input form
             string id_buku = txtID.Text;
             string judul_buku = txtJudulBuku.Text;
             string author = txtAuthor.Text;
             int id_kategori = ((KeyValuePair<string, int>)cmbKategori.SelectedItem).Value;
-            int jumlah = int.Parse(txtJumlah.Text);
-            decimal harga = decimal.Parse(txtHarga.Text);
+            string lokasi_buku = txtLokasiBuku.Text;
 
-            // Dapatkan nilai profit sebagai persentase
-            decimal profitPercent = decimal.Parse(txtProfit.Text); // Input profit percent dari form
-            decimal profit = harga * (profitPercent / 100); // Hitung profit sebagai persentase dari harga
+            // Hitung profit sebagai persentase dari harga
+            profit = harga * (profitPercent / 100);
 
             // Hitung harga_jual
-            decimal harga_jual = harga + profit;
+            harga_jual = harga + profit;
 
-            // Panggil metode TambahBuku
-            TambahBuku(id_buku, judul_buku, author, id_kategori, jumlah, harga, profit, harga_jual);
+            try
+            {
+                // Panggil metode TambahBuku
+                TambahBuku(id_buku, judul_buku, author, id_kategori, jumlah, harga, profit, harga_jual, lokasi_buku);
+                MessageBox.Show("Buku berhasil ditambahkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            // Validasi input
+            if (string.IsNullOrWhiteSpace(txtID.Text) ||
+                string.IsNullOrWhiteSpace(txtJudulBuku.Text) ||
+                string.IsNullOrWhiteSpace(txtAuthor.Text) ||
+                cmbKategori.SelectedIndex == -1 ||
+                string.IsNullOrWhiteSpace(txtJumlah.Text) ||
+                string.IsNullOrWhiteSpace(txtHarga.Text) ||
+                string.IsNullOrWhiteSpace(txtProfit.Text) ||
+                string.IsNullOrWhiteSpace(txtLokasiBuku.Text))
+            {
+                MessageBox.Show("Semua kolom wajib diisi!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int jumlah;
+            decimal harga, profitPercent, profit, harga_jual;
+
+            // Validasi angka untuk jumlah, harga, dan profit
+            if (!int.TryParse(txtJumlah.Text, out jumlah) ||
+                !decimal.TryParse(txtHarga.Text, out harga) ||
+                !decimal.TryParse(txtProfit.Text, out profitPercent))
+            {
+                MessageBox.Show("Jumlah, Harga, dan Profit harus diisi dengan angka yang valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Dapatkan data dari input form
             string id_buku = txtID.Text;
             string judul_buku = txtJudulBuku.Text;
             string author = txtAuthor.Text;
             int id_kategori = ((KeyValuePair<string, int>)cmbKategori.SelectedItem).Value;
-            int jumlah = int.Parse(txtJumlah.Text);
-            decimal harga = decimal.Parse(txtHarga.Text);
+            string lokasi_buku = txtLokasiBuku.Text;
 
-            // Dapatkan nilai profit sebagai persentase
-            decimal profitPercent = decimal.Parse(txtProfit.Text); // Input profit percent dari form
-            decimal profit = harga * (profitPercent / 100); // Hitung profit sebagai persentase dari harga
+            // Hitung profit sebagai persentase dari harga
+            profit = harga * (profitPercent / 100);
 
             // Hitung harga_jual
-            decimal harga_jual = harga + profit;
+            harga_jual = harga + profit;
 
-            // Panggil metode UbahBuku
-            UbahBuku(id_buku, judul_buku, author, id_kategori, jumlah, harga, profit, harga_jual);
+            try
+            {
+                // Panggil metode UbahBuku
+                UbahBuku(id_buku, judul_buku, author, id_kategori, jumlah, harga, profit, harga_jual, lokasi_buku);
+                MessageBox.Show("Buku berhasil diubah!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCari_Click(object sender, EventArgs e)
@@ -300,7 +398,9 @@ namespace ProjectUAS1.Frm
             txtJumlah.Clear();
             txtHarga.Clear();
             txtProfit.Clear();
+            txtLokasiBuku.Clear(); // Tambahkan ini
         }
+
 
         //Menhitung Total Buku, Total Transaksi, Stock Buku
         int HitungTotalBuku()
@@ -316,7 +416,6 @@ namespace ProjectUAS1.Frm
             }
         }
 
-
         int HitungTotalTransaksi()
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -330,7 +429,6 @@ namespace ProjectUAS1.Frm
             }
         }
 
-
         int HitungStockBuku()
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -343,7 +441,6 @@ namespace ProjectUAS1.Frm
                 return result == DBNull.Value ? 0 : Convert.ToInt32(result);
             }
         }
-
 
         private void FormDashboard_Load(object sender, EventArgs e)
         {
