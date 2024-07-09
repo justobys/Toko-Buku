@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuForm));
             this.pnlNavbar = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pctbxUser = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pnlTextTopNav = new System.Windows.Forms.Label();
             this.pnlSidebar = new System.Windows.Forms.Panel();
@@ -47,7 +47,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.PnlFormLoader = new System.Windows.Forms.Panel();
             this.pnlNavbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbxUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.pnlSidebar.SuspendLayout();
             this.pnlUser.SuspendLayout();
@@ -60,7 +60,7 @@
             // pnlNavbar
             // 
             this.pnlNavbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(212)))), ((int)(((byte)(221)))));
-            this.pnlNavbar.Controls.Add(this.pictureBox5);
+            this.pnlNavbar.Controls.Add(this.pctbxUser);
             this.pnlNavbar.Controls.Add(this.pictureBox4);
             this.pnlNavbar.Controls.Add(this.pnlTextTopNav);
             this.pnlNavbar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -69,15 +69,17 @@
             this.pnlNavbar.Size = new System.Drawing.Size(1064, 107);
             this.pnlNavbar.TabIndex = 0;
             // 
-            // pictureBox5
+            // pctbxUser
             // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(943, 17);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(63, 63);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 6;
-            this.pictureBox5.TabStop = false;
+            this.pctbxUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctbxUser.Image = ((System.Drawing.Image)(resources.GetObject("pctbxUser.Image")));
+            this.pctbxUser.Location = new System.Drawing.Point(943, 17);
+            this.pctbxUser.Name = "pctbxUser";
+            this.pctbxUser.Size = new System.Drawing.Size(63, 63);
+            this.pctbxUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctbxUser.TabIndex = 6;
+            this.pctbxUser.TabStop = false;
+            this.pctbxUser.Click += new System.EventHandler(this.pctbxUser_Click);
             // 
             // pictureBox4
             // 
@@ -287,7 +289,7 @@
             this.Load += new System.EventHandler(this.MenuForm_Load);
             this.pnlNavbar.ResumeLayout(false);
             this.pnlNavbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctbxUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.pnlSidebar.ResumeLayout(false);
             this.pnlSidebar.PerformLayout();
@@ -315,7 +317,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel PnlNav;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pctbxUser;
         private System.Windows.Forms.Label pnlTextTopNav;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox3;

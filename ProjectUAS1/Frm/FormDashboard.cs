@@ -131,54 +131,71 @@ namespace ProjectUAS1.Frm
         //Method untuk menambahkan buku
         void TambahBuku(string id_buku, string judul_buku, string author, int id_kategori, int jumlah, decimal harga, decimal profit, decimal harga_jual, string lokasi_buku)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                string query = @"INSERT INTO tbl_buku (idBuku, judul_buku, author, id_kategori, jumlah, harga, profit, harga_jual, lokasi_buku) 
-                         VALUES (@idBuku, @judul, @author, @kategori, @jumlah, @harga, @profit, @harga_jual, @lokasi_buku)";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@idBuku", id_buku);
-                cmd.Parameters.AddWithValue("@judul", judul_buku);
-                cmd.Parameters.AddWithValue("@author", author);
-                cmd.Parameters.AddWithValue("@kategori", id_kategori);
-                cmd.Parameters.AddWithValue("@jumlah", jumlah);
-                cmd.Parameters.AddWithValue("@harga", harga);
-                cmd.Parameters.AddWithValue("@profit", profit);
-                cmd.Parameters.AddWithValue("@harga_jual", harga_jual);
-                cmd.Parameters.AddWithValue("@lokasi_buku", lokasi_buku);
-                cmd.ExecuteNonQuery();
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = @"INSERT INTO tbl_buku (idBuku, judul_buku, author, id_kategori, jumlah, harga, profit, harga_jual, lokasi_buku) 
+                     VALUES (@idBuku, @judul, @author, @kategori, @jumlah, @harga, @profit, @harga_jual, @lokasi_buku)";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@idBuku", id_buku);
+                    cmd.Parameters.AddWithValue("@judul", judul_buku);
+                    cmd.Parameters.AddWithValue("@author", author);
+                    cmd.Parameters.AddWithValue("@kategori", id_kategori);
+                    cmd.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmd.Parameters.AddWithValue("@harga", harga);
+                    cmd.Parameters.AddWithValue("@profit", profit);
+                    cmd.Parameters.AddWithValue("@harga_jual", harga_jual);
+                    cmd.Parameters.AddWithValue("@lokasi_buku", lokasi_buku);
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Data berhasil ditambahkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearInput();
-                IsiDataGridView();
+                    // Tampilkan pesan sukses setelah operasi berhasil
+                    MessageBox.Show("Buku berhasil ditambahkan!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ClearInput();
+                    IsiDataGridView();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
         void UbahBuku(string id_buku, string judul_buku, string author, int id_kategori, int jumlah, decimal harga, decimal profit, decimal harga_jual, string lokasi_buku)
         {
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            try
             {
-                conn.Open();
-                string query = @"UPDATE tbl_buku 
-                         SET judul_buku = @judul, author = @author, id_kategori = @kategori, jumlah = @jumlah, 
-                             harga = @harga, profit = @profit, harga_jual = @harga_jual, lokasi_buku = @lokasi_buku
-                         WHERE idBuku = @idBuku";
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@idBuku", id_buku);
-                cmd.Parameters.AddWithValue("@judul", judul_buku);
-                cmd.Parameters.AddWithValue("@author", author);
-                cmd.Parameters.AddWithValue("@kategori", id_kategori);
-                cmd.Parameters.AddWithValue("@jumlah", jumlah);
-                cmd.Parameters.AddWithValue("@harga", harga);
-                cmd.Parameters.AddWithValue("@profit", profit);
-                cmd.Parameters.AddWithValue("@harga_jual", harga_jual);
-                cmd.Parameters.AddWithValue("@lokasi_buku", lokasi_buku);
-                cmd.ExecuteNonQuery();
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = @"UPDATE tbl_buku 
+                     SET judul_buku = @judul, author = @author, id_kategori = @kategori, jumlah = @jumlah, 
+                         harga = @harga, profit = @profit, harga_jual = @harga_jual, lokasi_buku = @lokasi_buku
+                     WHERE idBuku = @idBuku";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@idBuku", id_buku);
+                    cmd.Parameters.AddWithValue("@judul", judul_buku);
+                    cmd.Parameters.AddWithValue("@author", author);
+                    cmd.Parameters.AddWithValue("@kategori", id_kategori);
+                    cmd.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmd.Parameters.AddWithValue("@harga", harga);
+                    cmd.Parameters.AddWithValue("@profit", profit);
+                    cmd.Parameters.AddWithValue("@harga_jual", harga_jual);
+                    cmd.Parameters.AddWithValue("@lokasi_buku", lokasi_buku);
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Data berhasil diubah!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearInput();
-                IsiDataGridView();
+                    // Tampilkan pesan sukses setelah operasi berhasil
+                    MessageBox.Show("Buku berhasil diubah!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    ClearInput();
+                    IsiDataGridView();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -428,6 +445,19 @@ namespace ProjectUAS1.Frm
                 return result == DBNull.Value ? 0 : Convert.ToInt32(result);
             }
         }
+        int HitungTotal_Transaksi()
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT SUM(total_transaksi) FROM tbl_transaksi";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                object result = cmd.ExecuteScalar();
+                double totalTransaksi = result == DBNull.Value ? 0.0 : Convert.ToDouble(result);
+                return (int)totalTransaksi; // Konversi eksplisit ke int
+            }
+        }
 
         int HitungStockBuku()
         {
@@ -447,6 +477,23 @@ namespace ProjectUAS1.Frm
             lblTotalBuku.Text = HitungTotalBuku().ToString();
             lblTotalTransaksi.Text = HitungTotalTransaksi().ToString();
             lblStockBuku.Text = HitungStockBuku().ToString();
+        }
+
+        private void btnMoreInfoTotalBuku_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Total Buku: "+ HitungTotalBuku(), "Informasi Buku");
+        }
+
+        private void btnMoreInfoTotalTransaksi_Click(object sender, EventArgs e)
+        {
+            double totalTransaksi = HitungTotal_Transaksi();
+            string totalTransaksiRupiah = totalTransaksi.ToString("C", new CultureInfo("id-ID"));
+            MessageBox.Show("Total Transaksi: " + HitungTotalTransaksi() + "\nTotal: " + totalTransaksiRupiah, "Informasi Transaksi");
+        }
+
+        private void btnMoreInfoStockBuku_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Total Buku: " + HitungStockBuku(), "Informasi Stock Buku");
         }
     }
 }

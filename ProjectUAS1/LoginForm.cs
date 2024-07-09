@@ -6,13 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ProjectUAS1
 {
     public partial class LoginForm : Form
     {
+        public static string currentUsername; // Tambahkan ini untuk menyimpan username
+        public static string currentPassword;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -43,37 +46,12 @@ namespace ProjectUAS1
 
                             if (enteredPassword == storedPassword)
                             {
-                                string username = reader["username"].ToString();
+                                currentUsername = reader["username"].ToString();
                                 string level = reader["level"].ToString();
-                                switch (level)
-                                {
-                                    case "admin":
-                                        // Akses admin: tampilkan semua tombol dan transaksi
-                                        MenuForm adminForm = new MenuForm(level);
-                                        adminForm.Show();
-                                        adminForm.SetUsernameLabel(username);
-                                        this.Hide();
-                                        break;
-                                    case "public":
-                                        // Akses publik: sembunyikan tombol tertentu dan tampilan transaksi
-                                        MenuForm publicForm = new MenuForm(level);
-                                        // Sesuaikan DashboardForm untuk menyembunyikan/menonaktifkan elemen tertentu
-                                        publicForm.Show();
-                                        publicForm.SetUsernameLabel(username);
-                                        this.Hide();
-                                        break;
-                                    case "kasir":
-                                        // Akses publik: sembunyikan tombol tertentu dan tampilan transaksi
-                                        MenuForm kasirForm = new MenuForm(level);
-                                        // Sesuaikan DashboardForm untuk menyembunyikan/menonaktifkan elemen tertentu
-                                        kasirForm.Show();
-                                        kasirForm.SetUsernameLabel(username);
-                                        this.Hide();
-                                        break;
-                                    default:
-                                        MessageBox.Show("Akses ditolak");
-                                        return;
-                                }
+                                MenuForm menuForm = new MenuForm(currentUsername, level);
+                                menuForm.Show();
+                                menuForm.SetUsernameLabel(currentUsername);
+                                this.Hide();
                             }
                             else
                             {

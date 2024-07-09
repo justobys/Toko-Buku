@@ -10,32 +10,36 @@ using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using ProjectUAS1.Frm;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ProjectUAS1
 {
     public partial class MenuForm : Form
     {
+        private string currentUsername;
+        private string currentLevel;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
-            (
+        (
             int nLeftRect,
             int nTopRect,
-            int nRigthRect,
+            int nRightRect,
             int nBottomRect,
             int nWidthEllipse,
             int nHeightEllipse
-            );
-        private string userRole;
-        public MenuForm(string role)
+        );
+        public MenuForm(string username, string level)
         {
             InitializeComponent();
-            this.userRole = role;
+            currentUsername = username;
+            currentLevel = level;
+            SetUsernameLabel(currentUsername);
 
-            UpdateUIBasedOnUserRole(this.userRole);
+            UpdateUIBasedOnUserRole(currentLevel);
 
             // Jika role adalah kasir, tampilkan form transaksi
-            if (this.userRole == "kasir")
+            if (currentLevel == "kasir")
             {
                 Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
                 PnlNav.Height = btnTransaksi.Height;
@@ -63,7 +67,7 @@ namespace ProjectUAS1
                 //Untuk Menampilkan form dashboard diawal
                 pnlTextTopNav.Text = "Dashboard";
                 this.PnlFormLoader.Controls.Clear();
-                FormDashboard frmdashboard_vrb = new FormDashboard(userRole) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                FormDashboard frmdashboard_vrb = new FormDashboard(currentLevel) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                 frmdashboard_vrb.FormBorderStyle = FormBorderStyle.None;
                 this.PnlFormLoader.Controls.Add(frmdashboard_vrb);
                 frmdashboard_vrb.Show();
@@ -72,6 +76,7 @@ namespace ProjectUAS1
         public void SetUsernameLabel(string username)
         {
             lblUsername.Text = username;
+            currentUsername = username;
         }
 
         public void UpdateUIBasedOnUserRole(string role)
@@ -88,7 +93,8 @@ namespace ProjectUAS1
 
         private void MenuForm_Load(object sender, EventArgs e)
         {
-
+            // Set username yang sedang login
+            lblUsername.Text = LoginForm.currentUsername;
         }
         public void LoadFormIntoPanel(Form childForm)
         {
@@ -109,7 +115,7 @@ namespace ProjectUAS1
             //Untuk Menampilkan form dashboard
             pnlTextTopNav.Text = "Dashboard";
             this.PnlFormLoader.Controls.Clear();
-            FormDashboard frmdashboard_vrb = new FormDashboard(userRole) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            FormDashboard frmdashboard_vrb = new FormDashboard(currentLevel) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             frmdashboard_vrb.FormBorderStyle = FormBorderStyle.None;
             this.PnlFormLoader.Controls.Add(frmdashboard_vrb);
             frmdashboard_vrb.Show();
@@ -159,7 +165,7 @@ namespace ProjectUAS1
             if (dialogResult == DialogResult.Yes)
             {
                 // Jika pengguna memilih Ya, lakukan proses logout
-                if (userRole == "public")
+                if (currentLevel == "public")
                 {
                     // Jika pengguna adalah public, tampilkan puzzle
                     string puzzleAnswer = Microsoft.VisualBasic.Interaction.InputBox("Selesaikan puzzle ini untuk logout: Apa yang selalu di depan matamu tetapi tidak bisa kamu lihat?", "Puzzle Logout", "");
@@ -212,5 +218,17 @@ namespace ProjectUAS1
             Application.Exit();
         }
 
+        private void pctbxUser_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(currentUsername))
+            {
+                FormUserProfile formUbahPassword = new FormUserProfile(currentUsername);
+                formUbahPassword.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Username tidak tersedia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

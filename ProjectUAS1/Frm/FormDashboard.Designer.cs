@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlStockBuku = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.lblStockBuku = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnMoreInfoStockBuku = new System.Windows.Forms.Button();
             this.pnlTotalTransaksi = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.lblTotalTransaksi = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMoreInfoTotalTransaksi = new System.Windows.Forms.Button();
             this.pnlTotalBuku = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -81,7 +81,7 @@
             this.pnlStockBuku.Controls.Add(this.pictureBox8);
             this.pnlStockBuku.Controls.Add(this.label11);
             this.pnlStockBuku.Controls.Add(this.lblStockBuku);
-            this.pnlStockBuku.Controls.Add(this.button2);
+            this.pnlStockBuku.Controls.Add(this.btnMoreInfoStockBuku);
             this.pnlStockBuku.Location = new System.Drawing.Point(746, 193);
             this.pnlStockBuku.Name = "pnlStockBuku";
             this.pnlStockBuku.Size = new System.Drawing.Size(278, 158);
@@ -119,21 +119,22 @@
             this.lblStockBuku.TabIndex = 1;
             this.lblStockBuku.Text = "00";
             // 
-            // button2
+            // btnMoreInfoStockBuku
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(42)))), ((int)(((byte)(55)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(0, 125);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(278, 33);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "More Info";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnMoreInfoStockBuku.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(42)))), ((int)(((byte)(55)))));
+            this.btnMoreInfoStockBuku.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMoreInfoStockBuku.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnMoreInfoStockBuku.FlatAppearance.BorderSize = 0;
+            this.btnMoreInfoStockBuku.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMoreInfoStockBuku.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMoreInfoStockBuku.ForeColor = System.Drawing.Color.White;
+            this.btnMoreInfoStockBuku.Location = new System.Drawing.Point(0, 125);
+            this.btnMoreInfoStockBuku.Name = "btnMoreInfoStockBuku";
+            this.btnMoreInfoStockBuku.Size = new System.Drawing.Size(278, 33);
+            this.btnMoreInfoStockBuku.TabIndex = 0;
+            this.btnMoreInfoStockBuku.Text = "More Info";
+            this.btnMoreInfoStockBuku.UseVisualStyleBackColor = false;
+            this.btnMoreInfoStockBuku.Click += new System.EventHandler(this.btnMoreInfoStockBuku_Click);
             // 
             // pnlTotalTransaksi
             // 
@@ -141,7 +142,7 @@
             this.pnlTotalTransaksi.Controls.Add(this.pictureBox7);
             this.pnlTotalTransaksi.Controls.Add(this.label9);
             this.pnlTotalTransaksi.Controls.Add(this.lblTotalTransaksi);
-            this.pnlTotalTransaksi.Controls.Add(this.button1);
+            this.pnlTotalTransaksi.Controls.Add(this.btnMoreInfoTotalTransaksi);
             this.pnlTotalTransaksi.Location = new System.Drawing.Point(417, 192);
             this.pnlTotalTransaksi.Name = "pnlTotalTransaksi";
             this.pnlTotalTransaksi.Size = new System.Drawing.Size(278, 158);
@@ -179,21 +180,22 @@
             this.lblTotalTransaksi.TabIndex = 1;
             this.lblTotalTransaksi.Text = "00";
             // 
-            // button1
+            // btnMoreInfoTotalTransaksi
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(134)))), ((int)(((byte)(55)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(0, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(278, 33);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "More Info";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnMoreInfoTotalTransaksi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(134)))), ((int)(((byte)(55)))));
+            this.btnMoreInfoTotalTransaksi.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMoreInfoTotalTransaksi.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnMoreInfoTotalTransaksi.FlatAppearance.BorderSize = 0;
+            this.btnMoreInfoTotalTransaksi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMoreInfoTotalTransaksi.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMoreInfoTotalTransaksi.ForeColor = System.Drawing.Color.White;
+            this.btnMoreInfoTotalTransaksi.Location = new System.Drawing.Point(0, 125);
+            this.btnMoreInfoTotalTransaksi.Name = "btnMoreInfoTotalTransaksi";
+            this.btnMoreInfoTotalTransaksi.Size = new System.Drawing.Size(278, 33);
+            this.btnMoreInfoTotalTransaksi.TabIndex = 0;
+            this.btnMoreInfoTotalTransaksi.Text = "More Info";
+            this.btnMoreInfoTotalTransaksi.UseVisualStyleBackColor = false;
+            this.btnMoreInfoTotalTransaksi.Click += new System.EventHandler(this.btnMoreInfoTotalTransaksi_Click);
             // 
             // pnlTotalBuku
             // 
@@ -254,6 +256,7 @@
             this.btnMoreInfoTotalBuku.TabIndex = 0;
             this.btnMoreInfoTotalBuku.Text = "More Info";
             this.btnMoreInfoTotalBuku.UseVisualStyleBackColor = false;
+            this.btnMoreInfoTotalBuku.Click += new System.EventHandler(this.btnMoreInfoTotalBuku_Click);
             // 
             // cmbKategori
             // 
@@ -353,9 +356,9 @@
             // 
             // dgvTableBuku
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvTableBuku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTableBuku.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTableBuku.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTableBuku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTableBuku.Location = new System.Drawing.Point(19, 369);
@@ -569,12 +572,12 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblStockBuku;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnMoreInfoStockBuku;
         private System.Windows.Forms.Panel pnlTotalTransaksi;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblTotalTransaksi;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMoreInfoTotalTransaksi;
         private System.Windows.Forms.Panel pnlTotalBuku;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label8;

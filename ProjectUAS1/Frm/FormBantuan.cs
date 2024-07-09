@@ -22,7 +22,7 @@ namespace ProjectUAS1.Frm
             // Asumsikan bahwa Anda memiliki referensi ke instance MenuForm
             MenuForm menuForm = (MenuForm)this.ParentForm;
             bantuan_form helpForm = new bantuan_form();
-            menuForm.LoadFormIntoPanel(helpForm); // Panggil metode untuk memuat form
+            menuForm.LoadFormIntoPanel(helpForm);
             helpForm.Judul = title;
             helpForm.Isi = content;
             helpForm.Show();
